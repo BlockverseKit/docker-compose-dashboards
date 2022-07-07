@@ -23,8 +23,10 @@ N8N. Automation node platform.
 
 ### Hard testing for full workflows.
 
+
 In a nutshell:
-Example 1. Create a db, with tables, inject data with n8n toq uestdb, connect questdb to metabase for dashboard display, add iframe to webpage.
+
+Example 1. Create a db, with tables, inject data with n8n to questdb, connect questdb to metabase for dashboard display, add iframe to webpage.
 
 
 ### Tips:
