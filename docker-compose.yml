@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  questdb:
+    image: questdb/questdb
+    container_name: questdb
+    restart: always
+    env_file:
+      - ./config/questdb.env
+    ports:
+      - 9000:9000
+      - 9009:9009
+      - 8812:8812
+      - 9003:9003
+    volumes:
+      - ./questdb:/root/.questdb
+    networks:
+      - back
+  
+  metabase:
+    image: metabase/metabase
+    container_name: metabase    
+    restart: "always"
+    env_file:
+      - ./config/metabase.env
+    ports:
+      - 3000:3000
+    volumes:
+      - ./metabase-data:/metabase-data
+    depends_on:
+      - questdb
+    networks:
+      - back
+  
+  n8n:
+    image: n8nio/n8n
+    container_name: n8n
+    restart: always
+    env_file:
+      - ./config/n8n.env
+    ports:
+      - 5678:5678
+    volumes:
+      - ./n8n:/home/node/.n8n
+    depends_on:
+      - questdb
+    networks:
+      - back
+networks:
+    back:
+        driver: bridge
