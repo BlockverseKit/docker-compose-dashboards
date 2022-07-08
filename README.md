@@ -37,3 +37,6 @@ Example 1. Create a db, with tables, inject data with n8n to questdb, connect qu
 
 #### Deployments:
 At Digital Ocean with droplets.
+
+
+*Blockversekit developers.*
